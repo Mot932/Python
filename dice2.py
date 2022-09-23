@@ -28,7 +28,7 @@ while user_money and casino_money:
     else:
         print("ничья")
 
-if user_money == 0:
+if casino_money == 0:
     print("Игрок забрал все деньги")
 else:
     print("казино забрала все деньги")
