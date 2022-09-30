@@ -7,6 +7,7 @@ way_1 = True
 way_2 = True
 way_3 = True
 way_4 = True
+way_5 = True
 game = True
 user_hp = 100
 key = ""
@@ -14,7 +15,7 @@ key = ""
 
 while game:
 
-    if way_1 or way_2 or way_3 or way_4:
+    if (way_1 or way_2 or way_3 or way_4 or way_5) and key == "":
         key = ""
         os.system("cls")        
         print(f"Подъезжает {name} к четырём дорожкам, на перекрестке камень лежит, а на том камне написано: «Кто вправо поедет - тому убитым быть, кто влево поедет - тому богатым быть, а кто прямо поедет - тому женатым быть»")
@@ -26,9 +27,13 @@ while game:
             print("богатым быть.3")
         if way_4:
             print("могучим быть.4")
+        if way_5:
+            print("Альтернативный вариант.5")
 
-        user_choice = input("какой вариант? ")
-        key += user_choice
+        user_choice = input("какой вариант? ")     
+        if user_choice == "1" or user_choice == "2" or user_choice == "3" or user_choice == "4" or user_choice == "5":
+            key += user_choice
+        
 
     if key == "1" and way_1:
        os.system("cls")
@@ -36,75 +41,119 @@ while game:
        print("1 вариант")
        print("2 вариант")
        user_choice = input("Какой вариант? ")
-       key += user_choice
+       if user_choice == "1" or user_choice == "2":
+            key += user_choice
+       
 
-    if key == "11":
+    if key == "11" and way_1:
        os.system("cls")
        print("Дорога 1 - хороший выбор ")
        way_1 = False
+       key = ""
+       input("ENTER - дальше")
 
-    if key == "12":
+    if key == "12" and way_1:
         os.system("cls")
         print("Дорога 1 - Плохой выбор")
         game = False
 
-    if key == "2" and way_2:
+    if key == "2":
         os.system("cls")
         print("Дорога 2")
         print("1 вариант")
         print("2 вариант")
         user_choice = input("Какой вариант? ")
-        key += user_choice
+        if user_choice == "1" or user_choice == "2":
         
-    if key == "21":
+            key += user_choice
+        
+    if key == "21" and way_2:
         os.system("cls")
         print("Дорога 2 - хороший выбор ")
         way_2 = False
+        key = ""
+        input("ENTER - дальше")
 
-    if key == "22":
+    if key == "22" and way_2:
         os.system("cls")
         print("Дорога 2 - Плохой выбор")
         game = False
 
-    if key == "3" and way_3:
+    if key == "3":
         os.system("cls")
         print("Дорога 3")
         print("1 вариант")
         print("2 вариант")
-        user_choice = input("Какой вариант? ")
-        key += user_choice
 
-    if key == "31":
+        user_choice = input("Какой вариант? ")
+        if user_choice == "1" or user_choice == "2" or user_choice == "3":
+        
+            key += user_choice
+
+    if key == "31" and way_3:
         os.system("cls")
         print("Дорога 3 - хороший выбор ")
         way_3 = False
+        key = ""
+        input("ENTER - дальше")
 
-    if key == "32":
+    if key == "32" and way_3:
         os.system("cls")
         print("Дорога 3 - Плохой выбор")
         game = False
 
-    if key == "4" and way_4:
+
+    if key == "4":
        os.system("cls")
        print("Дорога 4")
        print("1 вариант")
        print("2 вариант")
        user_choice = input("Какой вариант? ")
-       key += user_choice
+       if user_choice == "1" or user_choice == "2":
+        
+            key += user_choice
 
-    if key == "41":
+    if key == "41" and way_4:
        os.system("cls")
        print("Дорога 4 - хороший выбор ")
        way_4 = False
+       key = ""
+       input("ENTER - дальше")
 
-    if key == "42":
+
+    if key == "42" and way_4:
         os.system("cls")
         print("Дорога 4 - Плохой выбор")
         game = False
 
 
+    if key == "5":
+       os.system("cls")
+       print("Дорога 5")
+       print("1 вариант")
+       print("2 вариант")
+       user_choice = input("Какой вариант? ")
+       if user_choice == "1" or user_choice == "2":
+        
+            key += user_choice
 
-    if way_1 == way_2 == way_3 == way_4 == False:
+    if key == "51" and way_5:
+       os.system("cls")
+       print("Дорога 5 - хороший выбор ")
+       way_4 = False
+       key = ""
+       input("ENTER - дальше")
+
+
+    if key == "52" and way_5:
+        os.system("cls")
+        print("Дорога 5 - Плохой выбор")
+        game = False
+        
+
+
+    if way_1 == way_2 == way_3 == way_4 == way_5 == False:
+        
         os.system("cls")
         print("Все дороги пройдены!")
         print("Конец")
