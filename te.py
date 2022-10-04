@@ -1,7 +1,13 @@
+import random
 import os
 
 name = input("Как зовут персонажа? ")
 if not name: name = "Ботик "
+
+os.system("cls")
+
+name_razb = input("Как зовут разбойника? ")
+if not name_razb: name_razb = "разбойник"
 
 way_1 = True
 way_2 = True
@@ -9,7 +15,9 @@ way_3 = True
 way_4 = True
 way_5 = True
 game = True
-user_hp = 100
+player_hp = 100
+razb_hp = 100
+
 key = ""
 
 
@@ -45,12 +53,47 @@ while game:
             key += user_choice
        
 
-    if key == "11" and way_1:
-       os.system("cls")
-       print("Дорога 1 - хороший выбор ")
-       way_1 = False
-       key = ""
-       input("ENTER - дальше")
+            if key == "11" and way_1:
+               os.system("cls")
+               
+               print(f" {name} увидел {name_razb}")
+               print(f" {name_razb} увидел {name} ")
+               input("ENTER - продолжить" )
+
+            os.system("cls")
+
+                           
+
+            attack_player = random.randint(50, 100)
+            attack_razb = random.randint(50, 100)
+
+
+
+            while player_hp > 0 and razb_hp > 0:
+                    os.system("cls")
+
+                    attack_player = random.randint(50, 60)
+                    razb_hp -= attack_player
+                    print(f"вы снесли разбойнику", attack_player)
+                    print(f"у {name_razb} осталось", razb_hp)
+
+                    attack_razb = random.randint(50, 60)    
+                    player_hp -= attack_razb
+                    print("разбойник снес", attack_razb)
+                    print(f"у {name} осталось", player_hp)
+
+                    if attack_player > attack_razb:
+                            print("игрок нанёс больше")
+
+                    elif attack_player < attack_razb:
+                        print("разбойник нанёс больше") 
+                        key = ""
+                        
+
+                       
+            input("ENTER - продолжить")        
+
+        
 
     if key == "12" and way_1:
         os.system("cls")
