@@ -47,9 +47,8 @@ while game:
        os.system("cls")
        print("Дорога 1")
        print("1 вариант")
-       print("2 вариант")
        user_choice = input("Какой вариант? ")
-       if user_choice == "1" or user_choice == "2":
+       if user_choice == "1":
             key += user_choice
        
 
@@ -72,26 +71,35 @@ while game:
             while player_hp > 0 and razb_hp > 0:
                     os.system("cls")
 
-                    attack_player = random.randint(50, 60)
+                    attack_player = random.randint(1, 50)
                     razb_hp -= attack_player
                     print(f"вы снесли разбойнику", attack_player)
                     print(f"у {name_razb} осталось", razb_hp)
 
-                    attack_razb = random.randint(50, 60)    
+                    attack_razb = random.randint(1, 50)    
                     player_hp -= attack_razb
                     print("разбойник снес", attack_razb)
                     print(f"у {name} осталось", player_hp)
 
                     if attack_player > attack_razb:
-                            print("игрок нанёс больше")
-
+                        print("разбойник снёс больше")
                     elif attack_player < attack_razb:
-                        print("разбойник нанёс больше") 
-                        key = ""
+                        print("вы снесли больше")
                         
 
-                       
-            input("ENTER - продолжить")        
+                    input("ENTER")
+
+                    if player_hp > 0 or razb_hp <= 0:
+                        
+                        way_1 = False
+                        key = ""
+                        print("Ты победил")
+
+                    elif player_hp <= 0 or razb_hp > 0:
+                        game = False
+                        print("Разбойник победил")
+                                    
+                        input("ENTER - продолжить")        
 
         
 
@@ -104,23 +112,38 @@ while game:
         os.system("cls")
         print("Дорога 2")
         print("1 вариант")
-        print("2 вариант")
         user_choice = input("Какой вариант? ")
-        if user_choice == "1" or user_choice == "2":
+        if user_choice == "1":
         
             key += user_choice
         
     if key == "21" and way_2:
-        os.system("cls")
-        print("Дорога 2 - хороший выбор ")
-        way_2 = False
-        key = ""
-        input("ENTER - дальше")
+        secret = random.randint(1, 10)
+        print("Княжна загадала число от 1 до 10")
 
-    if key == "22" and way_2:
-        os.system("cls")
-        print("Дорога 2 - Плохой выбор")
-        game = False
+        attemps = 4
+        while attemps:
+            print(f"у вас {attemps} попыток")
+            
+            user_choice = int(input("Введите число: "))
+            
+            
+            if user_choice == secret:
+                print("Угадал!")
+                key = ""
+                way_2 = False       
+                break
+            elif user_choice > secret:
+                print("Многовато!")
+                attemps -= 1
+            else:
+                print("Маловато!")
+                attemps -= 1 
+
+        else:
+            print("Проиграл! Кончились попытки!")
+            game = False 
+
 
     if key == "3":
         os.system("cls")
